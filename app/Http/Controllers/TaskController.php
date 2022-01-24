@@ -139,7 +139,7 @@ class TaskController extends Controller
         $task = $this->task->find($request->task_id);
 //        dd($task);
         if($request->image){
-            $this->deleteImage($task->image);
+            $this->deleteImage('task_image', $task->image);
             $task->update([
                 'image' => $this->uploadImage($request, 'task_image')
             ]);
@@ -189,7 +189,7 @@ class TaskController extends Controller
         if (is_null($task)) {
             return $this->ApiResponse(400, 'No Task Found');
         }
-        $this->deleteImage($task->image);
+        $this->deleteImage('task_image', $task->image);
         $task->delete();
         return $this->apiResponse(200,'Task deleted successfully');
     }

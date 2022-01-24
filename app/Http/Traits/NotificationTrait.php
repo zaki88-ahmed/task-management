@@ -31,6 +31,7 @@ trait NotificationTrait{
 
 
     public function sendNotification($users, $title, $body){
+//        dd(auth('sanctum')->user());
         $firebaseToken = User::whereNotNull('device_token')->pluck('device_token')->all();
         $SERVER_API_KEY = config('app.SERVER_API_KEY');
 //        dd($SERVER_API_KEY);
@@ -52,6 +53,8 @@ trait NotificationTrait{
         $ch = curl_init();
 //        dd($firebaseToken);
 
+//        dd($users->device_token);
+//        dd($data['registration_ids']);
         curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);

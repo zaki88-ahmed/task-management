@@ -70,13 +70,13 @@ trait UploadImageTrait{
 //        }
 
         if($image = $request->file('image')){
-            $image = $image->store($path);
+            $image = $request->file('image')->store($path);
         }
         return $request->file('image')->hashName();
     }
 
-    public function deleteImage($path){
-        unlink(storage_path('app/public/task_image/'.$path));
+    public function deleteImage($path, $file){
+        unlink(storage_path('app/public/' .  $path . '/' . $file));
     }
 
 
