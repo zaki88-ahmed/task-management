@@ -102,7 +102,8 @@ class TaskController extends Controller
 //            $managerId = $user->whereHas('Manager', function($q, $user){
 //                 $q->where('user_id', $user->id);
 //            })->first();
-            $manager = $user->with('manager')->first();
+//            dd(auth('sanctum')->user()->id);
+            $manager = Manager::where('user_id', $user->id)->first();
             $managerId = $manager->id;
 //            dd($managerId)
             $task = $this->task->create([
