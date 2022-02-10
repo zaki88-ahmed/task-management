@@ -159,7 +159,8 @@ class TaskController extends Controller
 //            dd($user);
         }
         elseif ($user->user_type == 2){
-            $manager = $user->with('manager')->first();
+//            $manager = $user->with('manager')->first();
+            $manager = Manager::where('user_id', $user->id)->first();
             $managerId = $manager->id;
 //            dd($managerId);
             $task->update([
@@ -260,7 +261,9 @@ class TaskController extends Controller
         $taskEmployeeId = $task->employee_id;
 //        dd($taskEmployeeId);
         $user = auth('sanctum')->user();
-        $employee = $user->with('employee')->first();
+//        $employee = $user->with('employee')->first();
+//        $employeeId = $employee->id;
+        $employee = Employee::where('user_id', $user->id)->first();
         $employeeId = $employee->id;
 //        dd($employeeId);
         if($taskEmployeeId == $employeeId){
