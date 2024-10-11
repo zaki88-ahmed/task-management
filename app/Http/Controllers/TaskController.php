@@ -116,8 +116,6 @@ class TaskController extends Controller
                 'status_id' => $request->status_id,
                 'parent_id' => $request->parent_id,
             ]);
-
-
         }
 
 //        $this->sendNotification($task->manager_id, 'New Task Added');

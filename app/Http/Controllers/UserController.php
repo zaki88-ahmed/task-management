@@ -54,8 +54,6 @@ class UserController extends Controller
 //            $user->assignRole('admin');
 //            $userRole = 'Admin';
 //        }
-//
-//
 //        else if($user->user_type == 2){
 //            $user->assignRole('manager');
 //            $userRole = 'Manager';
